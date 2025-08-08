@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/my-marriage-invitation/static/css/main.c1004c2d.css",
+    "main.js": "/my-marriage-invitation/static/js/main.e97eb9ef.js",
+    "static/js/453.d77f5f7f.chunk.js": "/my-marriage-invitation/static/js/453.d77f5f7f.chunk.js",
+    "static/media/hero-image.jpg": "/my-marriage-invitation/static/media/hero-image.637228030b15e2c5f898.jpg",
+    "index.html": "/my-marriage-invitation/index.html",
+    "main.c1004c2d.css.map": "/my-marriage-invitation/static/css/main.c1004c2d.css.map",
+    "main.e97eb9ef.js.map": "/my-marriage-invitation/static/js/main.e97eb9ef.js.map",
+    "453.d77f5f7f.chunk.js.map": "/my-marriage-invitation/static/js/453.d77f5f7f.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c1004c2d.css",
+    "static/js/main.e97eb9ef.js"
+  ]
+}
