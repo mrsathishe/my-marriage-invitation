@@ -1,0 +1,58 @@
+// Import shared SCSS files
+@import "../styles/variables";
+@import "../styles/mixins";
+
+.scroll-navigation {
+  position: fixed;
+  right: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  .nav-dot {
+    width: 50px;
+    height: 50px;
+    border-radius: $border-radius-circle;
+    border: 2px solid $bright-red;
+    background: $ivory;
+    cursor: pointer;
+    transition: all $transition-fast;
+    @include flex-center;
+    font-size: 18px;
+    box-shadow: $card-shadow;
+
+    &:hover {
+      background: $bright-red;
+      color: $ivory;
+      transform: scale(1.1);
+    }
+
+    &.active {
+      background: $emerald-green;
+      border-color: $emerald-green;
+      color: $ivory;
+      transform: scale(1.2);
+    }
+
+    .nav-icon {
+      pointer-events: none;
+    }
+  }
+}
+
+// Responsive Design
+@include mobile {
+  .scroll-navigation {
+    right: 15px;
+    gap: 10px;
+
+    .nav-dot {
+      width: 40px;
+      height: 40px;
+      font-size: 16px;
+    }
+  }
+}

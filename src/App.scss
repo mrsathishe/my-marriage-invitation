@@ -1,0 +1,1009 @@
+// Import shared SCSS files
+@import "./styles/variables";
+@import "./styles/mixins";
+
+// Base Styles
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 0px;
+  -webkit-overflow-scrolling: touch; /* iOS smooth scrolling */
+}
+
+body {
+  font-family: "Georgia", "Times New Roman", serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: $ivory;
+  overflow-x: hidden;
+}
+
+.App {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+// Hero Section
+.hero-section {
+  height: 100vh;
+  min-height: 600px;
+  background: linear-gradient(
+    rgba($bright-red, 0.3),
+    rgba($emerald-green, 0.3)
+  );
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  @include flex-center;
+  text-align: center;
+  position: relative;
+
+  .hero-content {
+    z-index: 2;
+    color: $ivory;
+    padding: 2rem;
+
+    .hero-invitation {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      font-weight: 500;
+      letter-spacing: 2px;
+      color: $gold;
+      @include text-shadow-strong;
+      text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.8),
+        1px 1px 4px rgba(0, 0, 0, 0.6);
+    }
+
+    .hero-title {
+      font-size: 2.8rem;
+      margin-bottom: 1.5rem;
+      font-weight: 300;
+      letter-spacing: 3px;
+      color: $ivory;
+      @include text-shadow-strong;
+      text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.8),
+        1px 1px 4px rgba(0, 0, 0, 0.6);
+    }
+
+    .hero-save-date {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      font-weight: bold;
+      color: $gold;
+      @include text-shadow-strong;
+      text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.8),
+        1px 1px 4px rgba(0, 0, 0, 0.6);
+    }
+
+    .hero-venue {
+      font-size: 1.4rem;
+      margin-bottom: 2rem;
+      color: $ivory;
+      line-height: 1.4;
+      @include text-shadow-strong;
+      text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
+    }
+
+    .countdown-title {
+      font-size: 1.6rem;
+      margin-bottom: 1rem;
+      color: $gold;
+      font-weight: 500;
+      letter-spacing: 1px;
+      @include text-shadow-strong;
+      text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
+    }
+
+    .hero-quote {
+      font-size: 1.3rem;
+      margin-top: 2rem;
+      font-style: italic;
+      font-family: "Playfair Display", "Dancing Script", cursive;
+      color: $gold;
+      font-weight: 400;
+      letter-spacing: 1px;
+      @include text-shadow-strong;
+      text-shadow: 4px 4px 12px rgba(0, 0, 0, 0.9),
+        2px 2px 8px rgba(0, 0, 0, 0.8), 1px 1px 4px rgba(0, 0, 0, 0.7);
+      max-width: 600px;
+      line-height: 1.5;
+    }
+
+    .countdown-timer {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+
+      .countdown-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background: rgba(255, 255, 255, 0.1);
+        padding: 1rem 1.5rem;
+        border-radius: 10px;
+        border: 2px solid $gold;
+        backdrop-filter: blur(10px);
+        min-width: 80px;
+
+        .countdown-number {
+          font-size: 2.5rem;
+          font-weight: bold;
+          color: $gold;
+          text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+          line-height: 1;
+          animation: pulse 2s infinite;
+        }
+
+        .countdown-label {
+          font-size: 0.9rem;
+          color: $ivory;
+          margin-top: 0.5rem;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+        }
+      }
+    }
+  }
+
+  // Scroll down arrow
+  .scroll-indicator {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: $gold;
+    font-size: 1.5rem;
+    animation: bounce 2s infinite;
+    cursor: pointer;
+    z-index: 3;
+
+    &::before {
+      content: "⬇";
+      display: block;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+    }
+  }
+}
+
+// Section Styles
+.section {
+  padding: $section-padding;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-title {
+  @include section-title;
+}
+
+// Couple Section
+.couple-section {
+  background: linear-gradient(135deg, $ivory 0%, #f8f8ff 100%);
+  text-align: center;
+  min-height: 80vh;
+  padding-top: 100px;
+
+  .couple-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $gap-large;
+    margin-top: 3rem;
+
+    .couple-card {
+      padding: $card-padding;
+      background: white;
+      border-radius: $border-radius;
+      box-shadow: $card-shadow;
+      border: 2px solid $emerald-green;
+      @include card-hover;
+
+      .couple-name {
+        font-size: 2.5rem;
+        color: $bright-red;
+        margin-bottom: 1rem;
+        font-weight: bold;
+      }
+
+      .couple-details {
+        font-size: 1.2rem;
+        color: #666;
+        line-height: 1.8;
+        margin-bottom: 2rem;
+        padding-bottom: 1.5rem;
+        border-bottom: 2px solid #f0f0f0;
+      }
+
+      .family-info {
+        margin-top: 1.5rem;
+
+        .family-subtitle {
+          font-size: 1.4rem;
+          color: $emerald-green;
+          margin-bottom: 1rem;
+          font-weight: bold;
+          text-align: center;
+        }
+
+        .family-members {
+          font-size: 1.1rem;
+          line-height: 1.6;
+          color: #555;
+
+          .family-location {
+            margin-top: 0.5rem;
+            color: $bright-red;
+            font-weight: 500;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Invitation Section
+.invitation-section {
+  background: linear-gradient(135deg, $ivory 0%, #f9f9f9 100%);
+  text-align: center;
+  padding: 80px 0;
+
+  .invitation-content {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 2rem;
+
+    .invitation-message {
+      margin-bottom: 3rem;
+
+      .invitation-text {
+        font-size: 1.4rem;
+        line-height: 1.8;
+        color: #555;
+        font-style: italic;
+        max-width: 700px;
+        margin: 0 auto;
+      }
+    }
+
+    .wedding-events {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 3rem;
+
+      .event-item {
+        background: white;
+        padding: 2rem;
+        border-radius: $border-radius;
+        box-shadow: $card-shadow;
+        border: 2px solid $bright-red;
+
+        .event-name {
+          font-size: 1.8rem;
+          color: $bright-red;
+          margin-bottom: 1.5rem;
+          font-weight: bold;
+        }
+
+        .event-details {
+          font-size: 1.2rem;
+          line-height: 1.6;
+
+          .event-date,
+          .event-time {
+            color: #666;
+            margin-bottom: 0.5rem;
+          }
+        }
+      }
+    }
+
+    .common-venue {
+      .venue-info {
+        background: $emerald-green;
+        color: $ivory;
+        padding: 2.5rem;
+        border-radius: $border-radius;
+        box-shadow: $card-shadow;
+
+        .venue-title {
+          font-size: 1.6rem;
+          color: $gold;
+          margin-bottom: 1rem;
+          font-weight: bold;
+        }
+
+        .venue-name {
+          font-size: 1.8rem;
+          font-weight: bold;
+          margin-bottom: 0.5rem;
+        }
+
+        .venue-address {
+          font-size: 1.3rem;
+          opacity: 0.9;
+        }
+      }
+    }
+  }
+}
+
+// Directions Section
+.directions-section {
+  background: linear-gradient(135deg, #f0f8ff 0%, $ivory 100%);
+  padding: 80px 0;
+
+  .directions-content {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+
+    .directions-info {
+      .directions-title {
+        font-size: 1.8rem;
+        color: $bright-red;
+        margin-bottom: 2rem;
+        font-weight: bold;
+      }
+
+      .direction-item {
+        margin-bottom: 2rem;
+        padding: 1.5rem;
+        background: white;
+        border-radius: $border-radius;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        border-left: 4px solid $emerald-green;
+
+        .direction-from {
+          font-size: 1.3rem;
+          color: $emerald-green;
+          margin-bottom: 0.8rem;
+          font-weight: bold;
+        }
+
+        .direction-text {
+          font-size: 1.1rem;
+          line-height: 1.6;
+          color: #555;
+        }
+      }
+
+      .parking-info {
+        padding: 1.5rem;
+        background: $emerald-green;
+        border-radius: $border-radius;
+        color: $ivory;
+
+        .parking-title {
+          font-size: 1.3rem;
+          color: $gold;
+          margin-bottom: 0.8rem;
+          font-weight: bold;
+        }
+
+        .parking-text {
+          font-size: 1.1rem;
+          line-height: 1.6;
+        }
+      }
+    }
+
+    .map-section {
+      .map-title {
+        font-size: 1.8rem;
+        color: $bright-red;
+        margin-bottom: 1.5rem;
+        font-weight: bold;
+        text-align: center;
+      }
+
+      .map-container {
+        background: white;
+        padding: 1rem;
+        border-radius: $border-radius;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+
+        iframe {
+          border-radius: $border-radius;
+        }
+
+        .map-note {
+          margin-top: 1rem;
+          font-size: 1rem;
+          color: #666;
+          text-align: center;
+          font-style: italic;
+        }
+      }
+    }
+  }
+}
+
+// Event Details Section
+.details-section {
+  background: $bright-red;
+  color: $ivory;
+  text-align: center;
+
+  .section-title {
+    color: $ivory;
+
+    &::after {
+      background: $gold;
+    }
+  }
+
+  .event-details {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+    margin-top: 3rem;
+
+    .event-card {
+      @include glass-effect;
+      padding: $card-padding;
+      border-radius: $border-radius;
+
+      .event-title {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+        color: $gold;
+      }
+
+      .event-info {
+        font-size: 1.2rem;
+        line-height: 1.8;
+      }
+    }
+  }
+}
+
+// Blessing Section
+.blessing-section {
+  background: linear-gradient(135deg, $ivory 0%, #f8f8ff 100%);
+  text-align: center;
+  padding: 80px 0;
+
+  .blessing-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 2rem;
+
+    .blessing-text {
+      .sanskrit-text {
+        font-size: 2.5rem;
+        color: $bright-red;
+        margin-bottom: 2rem;
+        font-weight: bold;
+      }
+
+      .blessing-message {
+        font-size: 1.3rem;
+        line-height: 1.8;
+        color: #555;
+        margin-bottom: 2rem;
+        font-style: italic;
+      }
+
+      .blessing-quote {
+        font-size: 1.1rem;
+        color: $emerald-green;
+        font-weight: 500;
+        border-left: 4px solid $gold;
+        padding-left: 1.5rem;
+        margin: 2rem auto;
+        max-width: 600px;
+      }
+    }
+  }
+}
+
+// Family Section
+.family-section {
+  background: $emerald-green;
+  color: $ivory;
+  text-align: center;
+
+  .section-title {
+    color: $ivory;
+
+    &::after {
+      background: $gold;
+    }
+  }
+
+  .family-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $gap-large;
+    margin-top: 3rem;
+
+    .family-card {
+      padding: $card-padding;
+      @include glass-effect;
+      border-radius: $border-radius;
+      border: 2px solid $gold;
+
+      .family-title {
+        font-size: 1.8rem;
+        color: $gold;
+        margin-bottom: 1.5rem;
+        font-weight: bold;
+      }
+
+      .family-details {
+        font-size: 1.2rem;
+        line-height: 1.8;
+
+        .family-location {
+          margin-top: 1rem;
+          font-style: italic;
+          color: $gold;
+        }
+      }
+    }
+  }
+}
+
+// Contact Section
+.contact-section {
+  background: linear-gradient(135deg, #f8f8ff 0%, $ivory 100%);
+  text-align: center;
+
+  .contact-container {
+    max-width: 600px;
+    margin: 0 auto;
+
+    .contact-card {
+      padding: $card-padding;
+      background: white;
+      border-radius: $border-radius;
+      box-shadow: $card-shadow;
+      border: 2px solid $bright-red;
+
+      .contact-title {
+        font-size: 1.5rem;
+        color: $bright-red;
+        margin-bottom: 1.5rem;
+      }
+
+      .contact-details {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: #666;
+        text-align: left;
+      }
+    }
+  }
+}
+
+// Timeline Section
+.timeline-section {
+  background: $emerald-green;
+  color: $ivory;
+
+  .section-title {
+    color: $ivory;
+
+    &::after {
+      background: $gold;
+    }
+  }
+
+  .timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 0;
+      width: 3px;
+      height: 100%;
+      background: $gold;
+      transform: translateX(-50%);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin: 3rem 0;
+      padding: $card-padding;
+      @include glass-effect;
+      border-radius: $border-radius;
+      width: 45%;
+
+      &:nth-child(odd) {
+        left: 0;
+
+        &::before {
+          right: -35px;
+        }
+      }
+
+      &:nth-child(even) {
+        left: 55%;
+
+        &::before {
+          left: -35px;
+        }
+      }
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        width: 20px;
+        height: 20px;
+        border-radius: $border-radius-circle;
+        background: $gold;
+        border: 3px solid $ivory;
+      }
+      .timeline-time {
+        font-size: 1.4rem;
+        font-weight: bold;
+        color: $gold;
+        margin-bottom: 0.5rem;
+      }
+
+      .timeline-event {
+        font-size: 1.2rem;
+      }
+    }
+  }
+}
+
+// Gallery Section
+.gallery-section {
+  background: linear-gradient(135deg, #f8f8ff 0%, $ivory 100%);
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: $gap-medium;
+    margin-top: 3rem;
+
+    .gallery-item {
+      aspect-ratio: 1;
+      @include gradient-background($bright-red, $emerald-green);
+      border-radius: $border-radius;
+      @include flex-center;
+      color: $ivory;
+      font-size: 1.2rem;
+      @include scale-hover;
+    }
+  }
+}
+
+// Footer
+.footer-section {
+  background: $dark-red;
+  color: $ivory;
+  text-align: center;
+  padding: 3rem 2rem;
+
+  .footer-content {
+    max-width: 800px;
+    margin: 0 auto;
+
+    .footer-title {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: $gold;
+    }
+
+    .footer-message {
+      font-size: 1.3rem;
+      line-height: 1.8;
+      font-style: italic;
+    }
+  }
+}
+
+// Responsive Design
+@include mobile {
+  .hero-section {
+    .hero-content {
+      .hero-invitation {
+        font-size: 2rem;
+        letter-spacing: 1px;
+        margin-bottom: 0.8rem;
+      }
+
+      .hero-title {
+        font-size: 2.2rem;
+        margin-bottom: 1rem;
+      }
+
+      .hero-save-date {
+        font-size: 1.6rem;
+        margin-bottom: 0.8rem;
+      }
+
+      .hero-venue {
+        font-size: 1.1rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .countdown-title {
+        font-size: 1.3rem;
+        margin-bottom: 0.8rem;
+      }
+
+      .hero-quote {
+        font-size: 1.1rem;
+        margin-top: 1.5rem;
+        letter-spacing: 0.5px;
+      }
+
+      .countdown-timer {
+        gap: 1rem;
+        margin-top: 1.5rem;
+
+        .countdown-item {
+          padding: 0.8rem 1rem;
+          min-width: 70px;
+
+          .countdown-number {
+            font-size: 2rem;
+          }
+
+          .countdown-label {
+            font-size: 0.8rem;
+          }
+        }
+      }
+    }
+  }
+
+  .section-title {
+    font-size: 2.5rem;
+  }
+
+  .couple-section {
+    .couple-container {
+      grid-template-columns: 1fr;
+      gap: $gap-medium;
+    }
+  }
+
+  .invitation-section {
+    .invitation-content {
+      .invitation-message {
+        margin-bottom: 2rem;
+
+        .invitation-text {
+          font-size: 1.2rem;
+        }
+      }
+
+      .wedding-events {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        margin-bottom: 2rem;
+
+        .event-item {
+          padding: 1.5rem;
+
+          .event-name {
+            font-size: 1.6rem;
+          }
+
+          .event-details {
+            font-size: 1.1rem;
+          }
+        }
+      }
+
+      .common-venue {
+        .venue-info {
+          padding: 2rem;
+
+          .venue-title {
+            font-size: 1.4rem;
+          }
+
+          .venue-name {
+            font-size: 1.6rem;
+          }
+
+          .venue-address {
+            font-size: 1.2rem;
+          }
+        }
+      }
+    }
+  }
+
+  .family-section {
+    .family-container {
+      grid-template-columns: 1fr;
+      gap: $gap-medium;
+    }
+  }
+
+  .blessing-section {
+    .blessing-content {
+      .sanskrit-text {
+        font-size: 2rem;
+      }
+
+      .blessing-message {
+        font-size: 1.1rem;
+      }
+    }
+  }
+
+  .timeline-section {
+    .timeline {
+      &::before {
+        left: 20px;
+      }
+
+      .timeline-item {
+        width: calc(100% - 60px);
+        left: 60px !important;
+
+        &::before {
+          left: -35px !important;
+        }
+      }
+    }
+  }
+
+  .directions-section {
+    padding: $gap-medium $gap-small;
+
+    .directions-content {
+      .directions-title {
+        font-size: 1.8rem;
+        margin-bottom: $gap-medium;
+      }
+
+      .directions-grid {
+        grid-template-columns: 1fr;
+        gap: $gap-small;
+      }
+
+      .direction-card {
+        padding: 1.2rem;
+
+        .direction-from {
+          font-size: 1rem;
+          margin-bottom: 0.5rem;
+        }
+
+        .direction-text {
+          font-size: 0.9rem;
+          line-height: 1.4;
+        }
+      }
+
+      .map-container {
+        margin-top: $gap-medium;
+
+        iframe {
+          height: 250px;
+        }
+      }
+
+      .parking-info {
+        padding: 1rem;
+        margin-top: $gap-small;
+
+        .parking-title {
+          font-size: 1rem;
+        }
+
+        .parking-text {
+          font-size: 0.9rem;
+        }
+      }
+    }
+  }
+}
+
+// Additional SCSS Features
+
+// Animation keyframes
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes scroll-indicator {
+  0%,
+  100% {
+    opacity: 0.3;
+    height: 20px;
+  }
+  50% {
+    opacity: 1;
+    height: 40px;
+  }
+}
+
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  40% {
+    transform: translateX(-50%) translateY(-10px);
+  }
+  60% {
+    transform: translateX(-50%) translateY(-5px);
+  }
+}
+
+// Utility classes
+.fade-in {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.pulse {
+  animation: pulse 2s infinite;
+}
+
+// Button styles (if needed for future features)
+.btn {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 25px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &.btn-primary {
+    background: linear-gradient(45deg, $bright-red, $emerald-green);
+    color: $ivory;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+  }
+
+  &.btn-secondary {
+    background: transparent;
+    color: $bright-red;
+    border: 2px solid $bright-red;
+
+    &:hover {
+      background: $bright-red;
+      color: $ivory;
+    }
+  }
+}

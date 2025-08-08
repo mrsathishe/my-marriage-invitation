@@ -1,0 +1,80 @@
+// Mixins
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin text-shadow-light {
+  text-shadow: $text-shadow-light;
+}
+
+@mixin text-shadow-strong {
+  text-shadow: $text-shadow-strong;
+}
+
+@mixin card-hover {
+  transition: transform $transition-fast;
+  &:hover {
+    transform: translateY(-10px);
+  }
+}
+
+@mixin scale-hover {
+  transition: transform $transition-fast;
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+@mixin glass-effect {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+@mixin gradient-background($color1, $color2) {
+  background: linear-gradient(45deg, $color1, $color2);
+}
+
+@mixin section-title {
+  font-size: 3rem;
+  text-align: center;
+  margin-bottom: 3rem;
+  color: $bright-red;
+  position: relative;
+
+  &::after {
+    content: "";
+    display: block;
+    width: 100px;
+    height: 3px;
+    background: $emerald-green;
+    margin: 1rem auto;
+  }
+}
+
+// Responsive mixins
+@mixin mobile {
+  @media (max-width: $mobile) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: $tablet) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: $desktop) {
+    @content;
+  }
+}

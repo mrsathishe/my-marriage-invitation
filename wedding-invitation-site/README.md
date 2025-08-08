@@ -14,22 +14,26 @@ A beautiful, elegant wedding invitation website built with React featuring smoot
 ## Getting Started
 
 ### Prerequisites
+
 - Node.js (version 14 or higher)
 - npm or yarn
 
 ### Installation
 
 1. Navigate to the project directory:
+
 ```bash
 cd wedding-invitation-site
 ```
 
 2. Install dependencies:
+
 ```bash
 npm install
 ```
 
 3. Start the development server:
+
 ```bash
 npm start
 ```
@@ -71,10 +75,10 @@ Update the color variables in `src/App.css`:
 
 ```css
 :root {
-  --bright-red: #DC143C;
-  --emerald-green: #50C878;
-  --ivory: #FFFFF0;
-  --gold: #FFD700;
+  --bright-red: #dc143c;
+  --emerald-green: #50c878;
+  --ivory: #fffff0;
+  --gold: #ffd700;
 }
 ```
 

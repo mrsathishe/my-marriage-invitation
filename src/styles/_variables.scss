@@ -1,0 +1,32 @@
+// SCSS Variables
+$bright-red: #dc143c;
+$emerald-green: #50c878;
+$ivory: #fffff0;
+$gold: #ffd700;
+$dark-red: #8b0000;
+$dark-green: #2e7d32;
+
+// Breakpoints
+$mobile: 768px;
+$tablet: 1024px;
+$desktop: 1200px;
+
+// Spacing
+$section-padding: 80px 20px;
+$card-padding: 2rem;
+$gap-small: 1rem;
+$gap-medium: 2rem;
+$gap-large: 4rem;
+
+// Shadows
+$card-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+$text-shadow-light: 1px 1px 2px rgba(0, 0, 0, 0.5);
+$text-shadow-strong: 2px 2px 4px rgba(0, 0, 0, 0.5);
+
+// Border radius
+$border-radius: 15px;
+$border-radius-circle: 50%;
+
+// Transitions
+$transition-fast: 0.3s ease;
+$transition-slow: 0.8s ease;
