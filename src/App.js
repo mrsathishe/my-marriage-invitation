@@ -104,28 +104,6 @@ function App() {
     smoothscroll.polyfill();
   }, []);
 
-  const scrollToNextSection = () => {
-    const coupleSection = document.querySelector(".couple-section");
-    if (coupleSection) {
-      const offsetTop = coupleSection.offsetTop;
-
-      // Smooth scroll with better performance
-      window.scrollTo({
-        top: offsetTop,
-        behavior: "smooth",
-      });
-
-      // Fallback
-      setTimeout(() => {
-        coupleSection.scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-          inline: "nearest",
-        });
-      }, 10);
-    }
-  };
-
   return (
     <div className="App">
       <ScrollNavigation />
@@ -167,7 +145,6 @@ function App() {
             ✨ "Whatever our souls are made of, his and mine are the same."
           </p>
         </motion.div>
-        <div className="scroll-indicator" onClick={scrollToNextSection}></div>
       </section>
 
       {/* Couple Section */}

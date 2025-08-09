@@ -13,6 +13,7 @@ html {
   scroll-behavior: smooth;
   scroll-padding-top: 0px;
   -webkit-overflow-scrolling: touch; /* iOS smooth scrolling */
+  overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
 body {
@@ -20,12 +21,17 @@ body {
   line-height: 1.6;
   color: #333;
   background-color: $ivory;
+  margin: 0;
+  padding: 0;
   overflow-x: hidden;
+  overflow-y: auto; /* Explicit vertical scrolling */
 }
 
 .App {
   width: 100%;
+  min-height: 100vh;
   overflow-x: hidden;
+  overflow-y: hidden; /* Fix dual scrollbars */
 }
 
 // Hero Section
@@ -240,25 +246,6 @@ body {
           text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
         }
       }
-    }
-  }
-
-  // Scroll down arrow
-  .scroll-indicator {
-    position: absolute;
-    bottom: 50px;
-    left: 50%;
-    transform: translateX(-50%);
-    color: $gold;
-    font-size: 1.5rem;
-    animation: bounce 2s infinite;
-    cursor: pointer;
-    z-index: 3;
-
-    &::before {
-      content: "⬇";
-      display: block;
-      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
     }
   }
 
@@ -1699,22 +1686,6 @@ body {
   50% {
     opacity: 1;
     height: 40px;
-  }
-}
-
-@keyframes bounce {
-  0%,
-  20%,
-  50%,
-  80%,
-  100% {
-    transform: translateX(-50%) translateY(0);
-  }
-  40% {
-    transform: translateX(-50%) translateY(-10px);
-  }
-  60% {
-    transform: translateX(-50%) translateY(-5px);
   }
 }
 
