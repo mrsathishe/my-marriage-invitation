@@ -1,16 +1,18 @@
 {
   "files": {
-    "main.css": "/my-marriage-invitation/static/css/main.c1004c2d.css",
-    "main.js": "/my-marriage-invitation/static/js/main.e97eb9ef.js",
-    "static/js/453.d77f5f7f.chunk.js": "/my-marriage-invitation/static/js/453.d77f5f7f.chunk.js",
-    "static/media/hero-image.jpg": "/my-marriage-invitation/static/media/hero-image.637228030b15e2c5f898.jpg",
-    "index.html": "/my-marriage-invitation/index.html",
-    "main.c1004c2d.css.map": "/my-marriage-invitation/static/css/main.c1004c2d.css.map",
-    "main.e97eb9ef.js.map": "/my-marriage-invitation/static/js/main.e97eb9ef.js.map",
-    "453.d77f5f7f.chunk.js.map": "/my-marriage-invitation/static/js/453.d77f5f7f.chunk.js.map"
+    "main.css": "/static/css/main.3cc1ec51.css",
+    "main.js": "/static/js/main.59c0c44f.js",
+    "static/js/453.d77f5f7f.chunk.js": "/static/js/453.d77f5f7f.chunk.js",
+    "static/media/hero-image.jpg": "/static/media/hero-image.637228030b15e2c5f898.jpg",
+    "static/media/Hindu-wedding.jpeg": "/static/media/Hindu-wedding.cd62c57761e6419c60c8.jpeg",
+    "static/media/couple-illustration.svg": "/static/media/couple-illustration.e4b6f119c4f6c5b95dc93d6656221c05.svg",
+    "index.html": "/index.html",
+    "main.3cc1ec51.css.map": "/static/css/main.3cc1ec51.css.map",
+    "main.59c0c44f.js.map": "/static/js/main.59c0c44f.js.map",
+    "453.d77f5f7f.chunk.js.map": "/static/js/453.d77f5f7f.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.c1004c2d.css",
-    "static/js/main.e97eb9ef.js"
+    "static/css/main.3cc1ec51.css",
+    "static/js/main.59c0c44f.js"
   ]
 }
