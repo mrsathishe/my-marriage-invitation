@@ -4,6 +4,8 @@ import { useInView } from "react-intersection-observer";
 import ScrollNavigation from "./components/ScrollNavigation";
 import smoothscroll from "smoothscroll-polyfill";
 import heroImage from "./asset/hero-image.jpg";
+import coupleIllustration from "./asset/couple-illustration.svg";
+import hinduWeddingImage from "./asset/Hindu-wedding.jpeg";
 import "./App.scss";
 
 // Animation variants
@@ -128,6 +130,15 @@ function App() {
     <div className="App">
       <ScrollNavigation />
 
+      {/* Fixed Calendar Widget */}
+      <div className="fixed-calendar-widget">
+        <div className="calendar-container-fixed">
+          <div className="calendar-month-fixed">Sep</div>
+          <div className="calendar-day-fixed">04</div>
+          <div className="calendar-year-fixed">2025</div>
+        </div>
+      </div>
+
       {/* Hero Section */}
       <section
         className="hero-section"
@@ -143,12 +154,13 @@ function App() {
         >
           <div className="hero-invitation">💍 Sathish & Durga</div>
           <h1 className="hero-title">are getting married</h1>
-          <div className="hero-save-date">
-            Save the Date: September 04, 2025
+          {/* <div className="hero-save-date">
+            <div className="save-date-label">Save the Date</div>
+            <div className="wedding-date-text">September 04, 2025</div>
           </div>
           <div className="hero-venue">
-            📍 Gokul Tirumana Mahal A/C, Tiruvannamalai, TamilNadu.
-          </div>
+            📍 Gokul Tirumana Mahal A/C, Mangalam, Tiruvannamalai, TamilNadu.
+          </div> */}
           <div className="countdown-title">Countdown to Our Big Day</div>
           <CountdownTimer />
           <p className="hero-quote">
@@ -166,40 +178,59 @@ function App() {
             <AnimatedSection animation={fadeInLeft} className="couple-card">
               <h3 className="couple-name">Sathish</h3>
               <div className="couple-details">
-                <p>Son of Elumalai & TamilSelvi</p>
                 <p>Senior Software Engineer at Cognizant, Chennai</p>
                 <p>Born and raised in Tiruvannamalai</p>
               </div>
               <div className="family-info">
-                <h4 className="family-subtitle">Groom's Family</h4>
+                <h4 className="family-subtitle">Son of</h4>
                 <div className="family-members">
                   <p>
-                    <strong>Father:</strong> Elumalai
+                    <strong>Mr. Elumalai</strong>
                   </p>
+                  <p>Ex. Senior Bailer, District Court Polur</p>
                   <p>
-                    <strong>Mother:</strong> TamilSelvi
+                    <strong>Mrs. TamilSelvi</strong>
                   </p>
+                  <p>Village Assistant, Revenue Department, Kilpennathur</p>
                   <p className="family-location">📍 Tiruvannamalai</p>
                 </div>
               </div>
             </AnimatedSection>
 
+            {/* Couple Animation Between Cards */}
+            <div className="couple-animation">
+              <div className="animation-container">
+                <img
+                  src={coupleIllustration}
+                  alt="Beautiful couple illustration"
+                  className="couple-illustration"
+                />
+                <div className="floating-hearts">
+                  <span className="heart">💖</span>
+                  <span className="heart">💝</span>
+                  <span className="heart">💗</span>
+                  <span className="heart">💘</span>
+                </div>
+              </div>
+            </div>
+
             <AnimatedSection animation={fadeInRight} className="couple-card">
               <h3 className="couple-name">Durga</h3>
               <div className="couple-details">
-                <p>Daughter of Venkatesan & Selvanayagi</p>
                 <p>Stenographer at Revenue Department (ULC), Chennai</p>
                 <p>Born and raised in Vellore</p>
               </div>
               <div className="family-info">
-                <h4 className="family-subtitle">Bride's Family</h4>
+                <h4 className="family-subtitle">Daughter of</h4>
                 <div className="family-members">
                   <p>
-                    <strong>Father:</strong> Venkatesan
+                    <strong>Mr. Venkatesan</strong>
                   </p>
+                  <p>Secretary, Coop. Credit Society, Othiyathur</p>
                   <p>
-                    <strong>Mother:</strong> Selvanayagi
+                    <strong>Mrs. Selvanayagi</strong>
                   </p>
+                  <p>Ex. Typist, Family Court, Vellore</p>
                   <p className="family-location">📍 Vellore</p>
                 </div>
               </div>
@@ -221,28 +252,80 @@ function App() {
               </p>
             </AnimatedSection>
             <div className="wedding-events">
-              <AnimatedSection animation={fadeInLeft} className="event-item">
-                <h3 className="event-name">Reception</h3>
-                <div className="event-details">
-                  <p className="event-date">📅 September 3rd, 2025</p>
-                  <p className="event-time">🕗 After 8:00 PM</p>
+              <AnimatedSection
+                animation={fadeInLeft}
+                className="event-item reception-event"
+              >
+                <div className="event-background">
+                  <img
+                    src="https://img.freepik.com/premium-vector/indian-wedding-symbol-groom-bride-clip-art-line-art-drawing-dulha-dulhan-black-white_1157715-17816.jpg"
+                    alt="Indian wedding couple illustration"
+                    className="event-decoration"
+                  />
+                </div>
+                <div className="event-content">
+                  <h3 className="event-name">Reception</h3>
+                  <div className="event-details">
+                    <p className="event-date">📅 September 3rd, 2025</p>
+                    <p className="event-time">🕗 After 8:00 PM</p>
+                  </div>
                 </div>
               </AnimatedSection>
 
-              <AnimatedSection animation={fadeInRight} className="event-item">
-                <h3 className="event-name">Wedding Ceremony</h3>
-                <div className="event-details">
-                  <p className="event-date">📅 September 4th, 2025</p>
-                  <p className="event-time">🕖 7:30 AM to 9:00 AM</p>
+              <AnimatedSection
+                animation={fadeInRight}
+                className="event-item wedding-ceremony-event"
+              >
+                <div className="event-background">
+                  <img
+                    src={hinduWeddingImage}
+                    alt="Traditional Hindu wedding ceremony with sacred fire"
+                    className="event-decoration"
+                  />
+                </div>
+                <div className="event-content">
+                  <h3 className="event-name">Wedding Ceremony</h3>
+                  <div className="event-details">
+                    <p className="event-date">📅 September 4th, 2025</p>
+                    <p className="event-time">🕖 7:30 AM to 9:00 AM</p>
+                  </div>
                 </div>
               </AnimatedSection>
             </div>
 
             <AnimatedSection className="common-venue">
-              <div className="venue-info">
-                <h4 className="venue-title">📍 Venue</h4>
-                <p className="venue-name">Gokul Tirumana Mahal A/C</p>
-                <p className="venue-address">Tiruvannamalai, TamilNadu</p>
+              <div
+                className="venue-info"
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "30px",
+                  flexWrap: "wrap",
+                }}
+              >
+                <div className="venue-image" style={{ flex: "0 0 auto" }}>
+                  <img
+                    src="https://content.jdmagicbox.com/v2/comp/chennai/k8/044pxx44.xx44.130814144519.b8k8/catalogue/ramani-thirumana-mahal-kovur-chennai-kalyana-mandapams-jE8qDtI8AZ.jpg"
+                    alt="Gokul Tirumana Mahal A/C"
+                    style={{
+                      width: "400px",
+                      height: "280px",
+                      objectFit: "cover",
+                      borderRadius: "10px",
+                      boxShadow: "0 4px 15px rgba(0, 0, 0, 0.2)",
+                    }}
+                  />
+                </div>
+                <div
+                  className="venue-details"
+                  style={{ flex: "1", minWidth: "200px" }}
+                >
+                  <h4 className="venue-title">📍 Venue</h4>
+                  <p className="venue-name">Gokul Tirumana Mahal A/C</p>
+                  <p className="venue-address">
+                    Mangalam, Tiruvannamalai, TamilNadu
+                  </p>
+                </div>
               </div>
             </AnimatedSection>
           </div>
@@ -254,31 +337,92 @@ function App() {
         <AnimatedSection>
           <h2 className="section-title">🗺️ Getting There</h2>
           <div className="directions-content">
-            <div className="directions-grid">
-              <AnimatedSection className="direction-card">
-                <h4 className="direction-from">From Tiruvannamalai Town:</h4>
+            <div
+              className="directions-grid directions-grid-custom"
+              style={{
+                display: "grid !important",
+                gridTemplateColumns: "1fr 1fr !important",
+                gridTemplateRows: "auto auto !important",
+                gap: "30px !important",
+              }}
+            >
+              <AnimatedSection
+                className="direction-card tiruvannamalai-card"
+                style={{
+                  gridColumn: "1 !important",
+                  gridRow: "1 / span 2 !important",
+                }}
+              >
+                <div className="direction-icon">🚗</div>
+                <h4 className="direction-from">From Tiruvannamalai Town</h4>
                 <p className="direction-text">
-                  Head towards the venue which is easily accessible from the
-                  town center. Follow the main roads and look for Gokul Tirumana
-                  Mahal A/C signboards.
+                  <strong>By Car:</strong> Take{" "}
+                  <strong>
+                    NH 38 and Avalurpettai Rd/Tiruvannamalai - Kanchipuram Rd
+                  </strong>{" "}
+                  heading towards Mangalam. The venue is located on{" "}
+                  <strong>Avalurpet road, opposite to EB office</strong> in
+                  Mangalam.
+                  <br />
+                  <br />
+                  <hr
+                    style={{
+                      width: "60%",
+                      margin: "10px 0",
+                      border: "0.5px solid #ddd",
+                    }}
+                  />
+                  <br />
+                  <strong>By Bus:</strong> Take bus to Avalurpettai via Mangalam
+                  road, or ask for local bus to Mangalam from Tiruvannamalai bus
+                  stand. Get down at Mangalam EB office stop or Mangalam and
+                  walk back to Tiruvannamalai road 850 meters to reach the
+                  mahal.
                 </p>
+                <div className="direction-distance">
+                  📏 19.2 km • 26 minutes
+                </div>
               </AnimatedSection>
 
-              <AnimatedSection className="direction-card">
-                <h4 className="direction-from">From Chennai:</h4>
+              <AnimatedSection
+                className="direction-card chennai-card"
+                style={{
+                  gridColumn: "2 !important",
+                  gridRow: "1 !important",
+                }}
+              >
+                <div className="direction-icon">🛣️</div>
+                <h4 className="direction-from">From Chennai</h4>
                 <p className="direction-text">
-                  Drive approximately 195 km via NH48 and NH234. Take the exit
-                  toward Tiruvannamalai and follow local directions to the
-                  venue.
+                  <strong>By Car:</strong> Take{" "}
+                  <strong>NH 32 and NH 179B</strong> via Melmaruvathur, then
+                  <strong>
+                    {" "}
+                    Cheyur - Vandavasi Rd/Tiruvannamalai - Kanchipuram Rd
+                  </strong>{" "}
+                  to reach the venue.
                 </p>
+                <div className="direction-distance">
+                  📏 180 km • 3 hr 17 min
+                </div>
               </AnimatedSection>
 
-              <AnimatedSection className="direction-card">
-                <h4 className="direction-from">From Vellore:</h4>
+              <AnimatedSection
+                className="direction-card vellore-card"
+                style={{
+                  gridColumn: "2 !important",
+                  gridRow: "2 !important",
+                }}
+              >
+                <div className="direction-icon">🛤️</div>
+                <h4 className="direction-from">From Vellore</h4>
                 <p className="direction-text">
-                  Drive approximately 85 km via SH9 toward Tiruvannamalai. The
-                  venue is easily accessible once you reach the town.
+                  <strong>By Car:</strong> Follow <strong>NH 38</strong> for
+                  80.0 km (1 hr 42 min), then drive to your destination.
                 </p>
+                <div className="direction-distance">
+                  📏 93.1 km • 2 hr 2 min
+                </div>
               </AnimatedSection>
             </div>
 
@@ -295,15 +439,7 @@ function App() {
                 title="Gokul Tirumana Mahal A/C Location"
               />
               <p className="map-note">
-                📍 Gokul Tirumana Mahal A/C, Tiruvannamalai, TamilNadu
-              </p>
-            </AnimatedSection>
-
-            <AnimatedSection className="parking-info">
-              <h4 className="parking-title">🚗 Parking:</h4>
-              <p className="parking-text">
-                Complimentary parking available on-site with ample space for all
-                guests.
+                📍 Gokul Tirumana Mahal A/C, Mangalam, Tiruvannamalai, TamilNadu
               </p>
             </AnimatedSection>
           </div>
@@ -323,14 +459,13 @@ function App() {
                 <p>
                   <strong>Groom's Side:</strong>
                 </p>
-                <p>Elumalai: [Phone Number]</p>
-                <p>Sathish: [Phone Number]</p>
+                <p>Elumalai: +91 - 96779 79659</p>
+                <p>Sathish: +91 - 97900 60943</p>
                 <br />
                 <p>
                   <strong>Bride's Side:</strong>
                 </p>
-                <p>Venkatesan: [Phone Number]</p>
-                <p>Durga: [Phone Number]</p>
+                <p>Venkatesan: +91 - 94434 62615</p>
               </div>
             </AnimatedSection>
           </div>

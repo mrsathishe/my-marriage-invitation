@@ -4,7 +4,7 @@
 
 .scroll-navigation {
   position: fixed;
-  right: 30px;
+  left: 30px;
   top: 50%;
   transform: translateY(-50%);
   z-index: 1000;
@@ -46,7 +46,7 @@
 // Responsive Design
 @include mobile {
   .scroll-navigation {
-    right: 15px;
+    left: 15px;
     gap: 10px;
 
     .nav-dot {

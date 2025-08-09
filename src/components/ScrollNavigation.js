@@ -8,10 +8,10 @@ const ScrollNavigation = () => {
     () => [
       { id: "hero", name: "🏠", title: "Home" },
       { id: "couple", name: "💑", title: "Couple" },
-      { id: "details", name: "📅", title: "Details" },
-      { id: "timeline", name: "💕", title: "Journey" },
-      { id: "gallery", name: "📸", title: "Gallery" },
-      { id: "footer", name: "💌", title: "Thank You" },
+      { id: "invitation", name: "💌", title: "Invitation" },
+      { id: "directions", name: "🗺️", title: "Directions" },
+      { id: "contact", name: "📞", title: "Contact" },
+      { id: "footer", name: "💕", title: "Thank You" },
     ],
     []
   );

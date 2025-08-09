@@ -5,6 +5,11 @@ $ivory: #fffff0;
 $gold: #ffd700;
 $dark-red: #8b0000;
 $dark-green: #2e7d32;
+$light-bg: #f8f9fa;
+
+// Typography
+$heading-font: "Playfair Display", "Georgia", serif;
+$body-font: "Georgia", "Times New Roman", serif;
 
 // Breakpoints
 $mobile: 768px;
@@ -12,7 +17,7 @@ $tablet: 1024px;
 $desktop: 1200px;
 
 // Spacing
-$section-padding: 80px 20px;
+$section-padding: 20px;
 $card-padding: 2rem;
 $gap-small: 1rem;
 $gap-medium: 2rem;

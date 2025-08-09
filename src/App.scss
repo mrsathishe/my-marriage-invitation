@@ -72,13 +72,102 @@ body {
     }
 
     .hero-save-date {
-      font-size: 2rem;
       margin-bottom: 1rem;
-      font-weight: bold;
       color: $gold;
       @include text-shadow-strong;
       text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.8),
         1px 1px 4px rgba(0, 0, 0, 0.6);
+
+      .save-date-label {
+        font-size: 1.4rem;
+        font-weight: 300;
+        letter-spacing: 2px;
+        margin-bottom: 0.5rem;
+        color: $ivory;
+      }
+
+      .wedding-date-text {
+        font-size: 2.2rem;
+        font-weight: bold;
+        color: $gold;
+        letter-spacing: 1px;
+        text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.8),
+          1px 1px 4px rgba(0, 0, 0, 0.6);
+      }
+
+      .wedding-date {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .calendar-container {
+          position: relative;
+          background: $ivory;
+          border-radius: 15px;
+          padding: 2rem 1.5rem 1.5rem 1.5rem;
+          box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+          border: 3px solid $gold;
+          min-width: 180px;
+          text-align: center;
+
+          // Calendar header (rings)
+          &::before {
+            content: "";
+            position: absolute;
+            top: -8px;
+            left: 25px;
+            width: 12px;
+            height: 16px;
+            background: $bright-red;
+            border-radius: 6px 6px 0 0;
+            box-shadow: 0 0 0 2px $ivory, 120px 0 0 0 $bright-red,
+              120px 0 0 2px $ivory;
+          }
+
+          // Calendar top bar
+          &::after {
+            content: "";
+            position: absolute;
+            top: 8px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, $gold 0%, $bright-red 100%);
+            border-radius: 2px;
+            margin: 0 15px;
+          }
+
+          .calendar-month {
+            font-size: 1.4rem;
+            font-weight: 500;
+            color: $bright-red;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+            border-bottom: 2px solid lighten($bright-red, 30%);
+            padding-bottom: 0.3rem;
+          }
+
+          .calendar-day {
+            font-size: 4.5rem;
+            font-weight: bold;
+            color: $bright-red;
+            line-height: 1;
+            margin: 0.5rem 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+          }
+
+          .calendar-year {
+            font-size: 1.6rem;
+            font-weight: 400;
+            color: darken($gold, 20%);
+            letter-spacing: 3px;
+            border-top: 1px solid lighten($gold, 20%);
+            padding-top: 0.5rem;
+            margin-top: 0.5rem;
+          }
+        }
+      }
     }
 
     .hero-venue {
@@ -172,6 +261,43 @@ body {
       text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
     }
   }
+
+  // Responsive styles for unique date display
+  @media (max-width: 768px) {
+    .hero-content {
+      .hero-save-date {
+        .wedding-date {
+          .calendar-container {
+            min-width: 150px;
+            padding: 1.5rem 1rem 1rem 1rem;
+
+            // Adjust calendar rings for mobile
+            &::before {
+              left: 20px;
+              width: 10px;
+              height: 14px;
+              box-shadow: 0 0 0 2px $ivory, 90px 0 0 0 $bright-red,
+                90px 0 0 2px $ivory;
+            }
+
+            .calendar-month {
+              font-size: 1.1rem;
+              letter-spacing: 1px;
+            }
+
+            .calendar-day {
+              font-size: 3.5rem;
+            }
+
+            .calendar-year {
+              font-size: 1.3rem;
+              letter-spacing: 2px;
+            }
+          }
+        }
+      }
+    }
+  }
 }
 
 // Section Styles
@@ -179,6 +305,35 @@ body {
   padding: $section-padding;
   max-width: 1200px;
   margin: 0 auto;
+  position: relative;
+
+  // Add horizontal line before each section (except the first)
+  &:not(:first-child)::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 2px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      $gold 20%,
+      $bright-red 50%,
+      $gold 80%,
+      transparent 100%
+    );
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+
+  // Mobile responsive for section lines
+  @media (max-width: 768px) {
+    &:not(:first-child)::before {
+      width: 90%;
+      height: 1.5px;
+    }
+  }
 }
 
 .section-title {
@@ -190,27 +345,72 @@ body {
   background: linear-gradient(135deg, $ivory 0%, #f8f8ff 100%);
   text-align: center;
   min-height: 80vh;
-  padding-top: 100px;
+  padding-top: 20px;
 
   .couple-container {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: $gap-large;
+    grid-template-columns: 1fr auto 1fr;
+    gap: $gap-medium;
     margin-top: 3rem;
+    align-items: center;
 
     .couple-card {
       padding: $card-padding;
       background: white;
       border-radius: $border-radius;
       box-shadow: $card-shadow;
-      border: 2px solid $emerald-green;
+      border: 3px solid transparent;
+      background-image: linear-gradient(white, white),
+        repeating-linear-gradient(
+          0deg,
+          $emerald-green 0px,
+          $emerald-green 2px,
+          transparent 2px,
+          transparent 8px,
+          $bright-red 8px,
+          $bright-red 10px,
+          transparent 10px,
+          transparent 16px
+        );
+      background-origin: padding-box, border-box;
+      background-clip: padding-box, border-box;
+      position: relative;
       @include card-hover;
+
+      // Floral corner decorations
+      &::before,
+      &::after {
+        content: "🌸";
+        position: absolute;
+        font-size: 1.5rem;
+        z-index: 1;
+      }
+
+      &::before {
+        top: 10px;
+        left: 10px;
+        transform: rotate(-15deg);
+      }
+
+      &::after {
+        bottom: 10px;
+        right: 10px;
+        transform: rotate(15deg);
+      }
+
+      // Additional floral decorations
+      .couple-name::after {
+        content: "🌺";
+        margin-left: 10px;
+        font-size: 1.2rem;
+      }
 
       .couple-name {
         font-size: 2.5rem;
         color: $bright-red;
         margin-bottom: 1rem;
         font-weight: bold;
+        position: relative;
       }
 
       .couple-details {
@@ -220,6 +420,18 @@ body {
         margin-bottom: 2rem;
         padding-bottom: 1.5rem;
         border-bottom: 2px solid #f0f0f0;
+        position: relative;
+
+        &::after {
+          content: "🌿";
+          position: absolute;
+          bottom: -10px;
+          left: 50%;
+          transform: translateX(-50%);
+          font-size: 1rem;
+          background: white;
+          padding: 0 10px;
+        }
       }
 
       .family-info {
@@ -231,6 +443,21 @@ body {
           margin-bottom: 1rem;
           font-weight: bold;
           text-align: center;
+          position: relative;
+
+          &::before,
+          &::after {
+            content: "🌼";
+            font-size: 1rem;
+          }
+
+          &::before {
+            margin-right: 8px;
+          }
+
+          &::after {
+            margin-left: 8px;
+          }
         }
 
         .family-members {
@@ -247,13 +474,88 @@ body {
       }
     }
   }
+
+  // Couple Animation Between Cards
+  .couple-animation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 150px;
+
+    .animation-container {
+      position: relative;
+      text-align: center;
+      padding: 2rem 1rem;
+
+      .couple-illustration {
+        width: 200px;
+        height: 200px;
+        object-fit: contain;
+        animation: float 4s ease-in-out infinite;
+        filter: drop-shadow(0 4px 15px rgba(0, 0, 0, 0.1));
+        border-radius: 50%;
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.9) 0%,
+          rgba(248, 248, 255, 0.8) 100%
+        );
+        padding: 10px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+
+        &:hover {
+          transform: scale(1.05);
+          filter: drop-shadow(0 6px 20px rgba(0, 0, 0, 0.15));
+        }
+      }
+
+      .floating-hearts {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        pointer-events: none;
+
+        .heart {
+          position: absolute;
+          font-size: 1.2rem;
+          animation: float 4s ease-in-out infinite;
+
+          &:nth-child(1) {
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+          }
+
+          &:nth-child(2) {
+            top: 30%;
+            right: 10%;
+            animation-delay: 1s;
+          }
+
+          &:nth-child(3) {
+            bottom: 30%;
+            left: 15%;
+            animation-delay: 2s;
+          }
+
+          &:nth-child(4) {
+            bottom: 20%;
+            right: 15%;
+            animation-delay: 3s;
+          }
+        }
+      }
+    }
+  }
 }
 
 // Invitation Section
 .invitation-section {
   background: linear-gradient(135deg, $ivory 0%, #f9f9f9 100%);
   text-align: center;
-  padding: 80px 0;
+  padding: 20px 0;
 
   .invitation-content {
     max-width: 1000px;
@@ -285,6 +587,8 @@ body {
         border-radius: $border-radius;
         box-shadow: $card-shadow;
         border: 2px solid $bright-red;
+        position: relative;
+        overflow: hidden;
 
         .event-name {
           font-size: 1.8rem;
@@ -301,6 +605,220 @@ body {
           .event-time {
             color: #666;
             margin-bottom: 0.5rem;
+          }
+        }
+
+        // Special styling for reception event
+        &.reception-event {
+          background: linear-gradient(
+            135deg,
+            rgba(255, 248, 240, 0.98) 0%,
+            rgba(255, 245, 238, 0.95) 100%
+          );
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+          border: 3px solid transparent;
+          background-image: linear-gradient(
+              135deg,
+              rgba(255, 248, 240, 0.98) 0%,
+              rgba(255, 245, 238, 0.95) 100%
+            ),
+            repeating-linear-gradient(
+              45deg,
+              $gold 0px,
+              $gold 2px,
+              transparent 2px,
+              transparent 8px,
+              $bright-red 8px,
+              $bright-red 10px,
+              transparent 10px,
+              transparent 16px
+            );
+          background-origin: padding-box, border-box;
+          background-clip: padding-box, border-box;
+
+          // Traditional corner decorations
+          &::before,
+          &::after {
+            content: "🌺";
+            position: absolute;
+            font-size: 1.5rem;
+            z-index: 3;
+            color: $bright-red;
+          }
+
+          &::before {
+            top: 8px;
+            left: 8px;
+            transform: rotate(-15deg);
+          }
+
+          &::after {
+            bottom: 8px;
+            right: 8px;
+            transform: rotate(15deg);
+          }
+
+          .event-background {
+            position: relative;
+            flex: 0 0 auto;
+            width: 120px;
+            height: 150px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            border: 2px solid $gold;
+
+            .event-decoration {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+              opacity: 1;
+              filter: none;
+              transition: transform 0.3s ease;
+            }
+          }
+
+          .event-content {
+            flex: 1;
+            text-align: left;
+
+            .event-name {
+              margin-bottom: 1rem;
+              color: $bright-red;
+              text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+              position: relative;
+
+              &::after {
+                content: "🎊";
+                margin-left: 8px;
+                font-size: 1.2rem;
+              }
+            }
+
+            .event-details {
+              .event-date,
+              .event-time {
+                text-align: left;
+                color: #444;
+                font-weight: 500;
+              }
+            }
+          }
+
+          &:hover {
+            .event-decoration {
+              transform: scale(1.05);
+            }
+          }
+        }
+
+        // Special styling for wedding ceremony event
+        &.wedding-ceremony-event {
+          background: linear-gradient(
+            135deg,
+            rgba(248, 255, 248, 0.98) 0%,
+            rgba(245, 255, 245, 0.95) 100%
+          );
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+          border: 3px solid transparent;
+          background-image: linear-gradient(
+              135deg,
+              rgba(248, 255, 248, 0.98) 0%,
+              rgba(245, 255, 245, 0.95) 100%
+            ),
+            repeating-linear-gradient(
+              -45deg,
+              $emerald-green 0px,
+              $emerald-green 2px,
+              transparent 2px,
+              transparent 8px,
+              $gold 8px,
+              $gold 10px,
+              transparent 10px,
+              transparent 16px
+            );
+          background-origin: padding-box, border-box;
+          background-clip: padding-box, border-box;
+
+          // Traditional corner decorations
+          &::before,
+          &::after {
+            content: "🕉️";
+            position: absolute;
+            font-size: 1.3rem;
+            z-index: 3;
+            color: $emerald-green;
+          }
+
+          &::before {
+            top: 8px;
+            right: 8px;
+            transform: rotate(15deg);
+          }
+
+          &::after {
+            bottom: 8px;
+            left: 8px;
+            transform: rotate(-15deg);
+          }
+
+          .event-background {
+            position: relative;
+            flex: 0 0 auto;
+            width: 120px;
+            height: 150px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            border: 2px solid $emerald-green;
+            order: 2;
+
+            .event-decoration {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+              opacity: 1;
+              filter: none;
+              transition: transform 0.3s ease;
+            }
+          }
+
+          .event-content {
+            flex: 1;
+            text-align: right;
+            order: 1;
+
+            .event-name {
+              margin-bottom: 1rem;
+              color: $emerald-green;
+              text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+              position: relative;
+
+              &::before {
+                content: "🙏";
+                margin-right: 8px;
+                font-size: 1.2rem;
+              }
+            }
+
+            .event-details {
+              .event-date,
+              .event-time {
+                text-align: right;
+                color: #444;
+                font-weight: 500;
+              }
+            }
+          }
+
+          &:hover {
+            .event-decoration {
+              transform: scale(1.05);
+            }
           }
         }
       }
@@ -339,91 +857,209 @@ body {
 // Directions Section
 .directions-section {
   background: linear-gradient(135deg, #f0f8ff 0%, $ivory 100%);
-  padding: 80px 0;
+  padding: 20px 0;
 
   .directions-content {
-    max-width: 1000px;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 0 2rem;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: start;
 
-    .directions-info {
-      .directions-title {
-        font-size: 1.8rem;
-        color: $bright-red;
-        margin-bottom: 2rem;
-        font-weight: bold;
-      }
+    .directions-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+      margin-bottom: 4rem;
 
-      .direction-item {
-        margin-bottom: 2rem;
-        padding: 1.5rem;
-        background: white;
-        border-radius: $border-radius;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        border-left: 4px solid $emerald-green;
+      // Custom grid layout override
+      &.directions-grid-custom {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        grid-template-rows: auto auto !important;
+        gap: 30px !important;
 
-        .direction-from {
-          font-size: 1.3rem;
-          color: $emerald-green;
-          margin-bottom: 0.8rem;
-          font-weight: bold;
+        .tiruvannamalai-card {
+          grid-column: 1 !important;
+          grid-row: 1 / span 2 !important;
         }
 
-        .direction-text {
-          font-size: 1.1rem;
-          line-height: 1.6;
-          color: #555;
-        }
-      }
-
-      .parking-info {
-        padding: 1.5rem;
-        background: $emerald-green;
-        border-radius: $border-radius;
-        color: $ivory;
-
-        .parking-title {
-          font-size: 1.3rem;
-          color: $gold;
-          margin-bottom: 0.8rem;
-          font-weight: bold;
+        .chennai-card {
+          grid-column: 2 !important;
+          grid-row: 1 !important;
         }
 
-        .parking-text {
-          font-size: 1.1rem;
-          line-height: 1.6;
+        .vellore-card {
+          grid-column: 2 !important;
+          grid-row: 2 !important;
+        }
+
+        // Mobile responsive layout
+        @media (max-width: 768px) {
+          grid-template-columns: 1fr !important;
+          grid-template-rows: auto auto auto !important;
+
+          .tiruvannamalai-card {
+            grid-column: 1 !important;
+            grid-row: 1 !important;
+          }
+
+          .chennai-card {
+            grid-column: 1 !important;
+            grid-row: 2 !important;
+          }
+
+          .vellore-card {
+            grid-column: 1 !important;
+            grid-row: 3 !important;
+          }
         }
       }
     }
 
-    .map-section {
+    .direction-card {
+      background: white;
+      border-radius: 20px;
+      padding: 2rem;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+      border-left: 6px solid $emerald-green;
+      position: relative;
+      transition: all 0.3s ease;
+      overflow: hidden;
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100px;
+        height: 100px;
+        background: linear-gradient(135deg, $bright-red, $emerald-green);
+        opacity: 0.1;
+        border-radius: 0 20px 0 100px;
+      }
+
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        border-left-color: $bright-red;
+      }
+
+      .direction-icon {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        display: block;
+      }
+
+      .direction-from {
+        font-size: 1.4rem;
+        color: $emerald-green;
+        margin-bottom: 1rem;
+        font-weight: bold;
+        font-family: $heading-font;
+      }
+
+      .direction-text {
+        font-size: 1.1rem;
+        line-height: 1.7;
+        color: #555;
+        margin-bottom: 1rem;
+
+        strong {
+          color: $bright-red;
+          font-weight: 600;
+        }
+      }
+
+      .direction-distance {
+        display: inline-block;
+        background: linear-gradient(135deg, $emerald-green, $bright-red);
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        font-weight: 500;
+      }
+    }
+
+    .map-qr-section {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .map-container {
+      background: white;
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+
       .map-title {
         font-size: 1.8rem;
         color: $bright-red;
         margin-bottom: 1.5rem;
         font-weight: bold;
         text-align: center;
+        font-family: $heading-font;
       }
 
-      .map-container {
-        background: white;
-        padding: 1rem;
-        border-radius: $border-radius;
+      iframe {
+        border-radius: 15px;
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      }
 
-        iframe {
-          border-radius: $border-radius;
+      .map-note {
+        margin-top: 1.5rem;
+        font-size: 1.1rem;
+        color: #666;
+        text-align: center;
+        font-style: italic;
+        padding: 1rem;
+        background: $light-bg;
+        border-radius: 10px;
+      }
+    }
+
+    .qr-container {
+      background: white;
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      border: 2px solid $light-bg;
+
+      .qr-title {
+        font-size: 1.6rem;
+        color: $bright-red;
+        margin-bottom: 1.5rem;
+        font-weight: bold;
+        font-family: $heading-font;
+      }
+
+      .qr-code {
+        .qr-image {
+          width: 180px;
+          height: 180px;
+          border-radius: 15px;
+          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+          margin: 0 auto 1rem;
+          display: block;
+          transition: transform 0.3s ease;
+
+          &:hover {
+            transform: scale(1.05);
+          }
         }
 
-        .map-note {
-          margin-top: 1rem;
+        .qr-text {
+          font-size: 1.2rem;
+          color: $emerald-green;
+          font-weight: 600;
+          margin-bottom: 0.5rem;
+        }
+
+        .qr-subtext {
           font-size: 1rem;
           color: #666;
-          text-align: center;
           font-style: italic;
         }
       }
@@ -777,6 +1413,35 @@ body {
     .couple-container {
       grid-template-columns: 1fr;
       gap: $gap-medium;
+
+      // Reorder for mobile: Sathish -> Animation -> Durga
+      .couple-card:first-of-type {
+        order: 1; // Sathish card first
+      }
+
+      .couple-animation {
+        order: 2; // Animation in the middle
+        margin: 2rem 0;
+
+        .animation-container {
+          padding: 1rem;
+
+          .couple-illustration {
+            width: 150px;
+            height: 150px;
+          }
+
+          .floating-hearts {
+            .heart {
+              font-size: 1rem;
+            }
+          }
+        }
+      }
+
+      .couple-card:last-of-type {
+        order: 3; // Durga card last
+      }
     }
   }
 
@@ -804,6 +1469,62 @@ body {
 
           .event-details {
             font-size: 1.1rem;
+          }
+
+          &.reception-event {
+            flex-direction: column;
+            text-align: center;
+
+            .event-background {
+              width: 100px;
+              height: 120px;
+              margin: 0 auto 1rem auto;
+
+              .event-decoration {
+                width: 100%;
+                height: 100%;
+              }
+            }
+
+            .event-content {
+              text-align: center;
+
+              .event-details {
+                .event-date,
+                .event-time {
+                  text-align: center;
+                }
+              }
+            }
+          }
+
+          &.wedding-ceremony-event {
+            flex-direction: column;
+            text-align: center;
+
+            .event-background {
+              width: 100px;
+              height: 120px;
+              margin: 0 auto 1rem auto;
+              order: 1;
+
+              .event-decoration {
+                width: 100%;
+                height: 100%;
+              }
+            }
+
+            .event-content {
+              text-align: center;
+              order: 2;
+
+              .event-details {
+                .event-date,
+                .event-time {
+                  text-align: center;
+                }
+              }
+            }
           }
         }
       }
@@ -868,48 +1589,77 @@ body {
     padding: $gap-medium $gap-small;
 
     .directions-content {
-      .directions-title {
-        font-size: 1.8rem;
-        margin-bottom: $gap-medium;
-      }
-
       .directions-grid {
         grid-template-columns: 1fr;
         gap: $gap-small;
+        margin-bottom: 2rem;
       }
 
       .direction-card {
-        padding: 1.2rem;
+        padding: 1.5rem;
+
+        .direction-icon {
+          font-size: 2rem;
+        }
 
         .direction-from {
-          font-size: 1rem;
-          margin-bottom: 0.5rem;
+          font-size: 1.2rem;
+          margin-bottom: 0.8rem;
         }
 
         .direction-text {
-          font-size: 0.9rem;
-          line-height: 1.4;
+          font-size: 1rem;
+          line-height: 1.5;
+        }
+
+        .direction-distance {
+          font-size: 0.8rem;
+          padding: 0.4rem 0.8rem;
         }
       }
 
+      .map-qr-section {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
       .map-container {
-        margin-top: $gap-medium;
+        padding: 1.5rem;
+
+        .map-title {
+          font-size: 1.4rem;
+        }
 
         iframe {
           height: 250px;
         }
+
+        .map-note {
+          font-size: 1rem;
+          padding: 0.8rem;
+        }
       }
 
-      .parking-info {
-        padding: 1rem;
-        margin-top: $gap-small;
+      .qr-container {
+        padding: 1.5rem;
 
-        .parking-title {
-          font-size: 1rem;
+        .qr-title {
+          font-size: 1.4rem;
         }
 
-        .parking-text {
-          font-size: 0.9rem;
+        .qr-code {
+          .qr-image {
+            width: 150px;
+            height: 150px;
+          }
+
+          .qr-text {
+            font-size: 1.1rem;
+          }
+
+          .qr-subtext {
+            font-size: 0.9rem;
+          }
         }
       }
     }
@@ -968,6 +1718,43 @@ body {
   }
 }
 
+// New animations for couple section
+@keyframes heartbeat {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.2);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  75% {
+    transform: scale(1.15);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0.8;
+  }
+  25% {
+    transform: translateY(-15px) rotate(5deg);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-25px) rotate(-5deg);
+    opacity: 0.9;
+  }
+  75% {
+    transform: translateY(-10px) rotate(3deg);
+    opacity: 1;
+  }
+}
+
 // Utility classes
 .fade-in {
   animation: fadeInUp 0.6s ease-out;
@@ -1004,6 +1791,185 @@ body {
     &:hover {
       background: $bright-red;
       color: $ivory;
+    }
+  }
+}
+
+// Fixed Calendar Widget
+.fixed-calendar-widget {
+  position: fixed;
+  top: 30px;
+  right: 30px;
+  z-index: 1000;
+  animation: pulse 3s infinite;
+
+  .calendar-container-fixed {
+    position: relative;
+    background: $ivory;
+    border-radius: 15px;
+    padding: 1.5rem 1.2rem 1.2rem 1.2rem;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4), 0 0 0 4px $gold,
+      0 0 20px rgba($gold, 0.6);
+    min-width: 100px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+
+    &:hover {
+      transform: translateY(-8px) scale(1.1);
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5), 0 0 0 4px $gold,
+        0 0 30px rgba($gold, 0.8);
+      animation-play-state: paused;
+    }
+
+    // Calendar header (rings)
+    &::before {
+      content: "";
+      position: absolute;
+      top: -8px;
+      left: 20px;
+      width: 10px;
+      height: 15px;
+      background: $bright-red;
+      border-radius: 5px 5px 0 0;
+      box-shadow: 0 0 0 2px $ivory, 50px 0 0 0 $bright-red, 50px 0 0 2px $ivory;
+    }
+
+    // Calendar top bar
+    &::after {
+      content: "";
+      position: absolute;
+      top: 8px;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, $gold 0%, $bright-red 100%);
+      border-radius: 2px;
+      margin: 0 12px;
+    }
+
+    .calendar-month-fixed {
+      font-size: 1rem;
+      font-weight: 600;
+      color: $bright-red;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 0.3rem;
+      border-bottom: 2px solid lighten($bright-red, 30%);
+      padding-bottom: 0.3rem;
+    }
+
+    .calendar-day-fixed {
+      font-size: 2.8rem;
+      font-weight: bold;
+      color: $bright-red;
+      line-height: 1;
+      margin: 0.4rem 0;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .calendar-year-fixed {
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: darken($gold, 20%);
+      letter-spacing: 2px;
+      border-top: 2px solid lighten($gold, 20%);
+      padding-top: 0.4rem;
+      margin-top: 0.3rem;
+    }
+  }
+}
+
+// Mobile responsive for fixed calendar
+@media (max-width: 768px) {
+  .fixed-calendar-widget {
+    top: 15px;
+    right: 15px;
+
+    .calendar-container-fixed {
+      min-width: 100px;
+      padding: 1rem 0.8rem 0.8rem 0.8rem;
+      border-radius: 12px;
+
+      &::before {
+        left: 18px;
+        width: 6px;
+        height: 10px;
+        box-shadow: 0 0 0 2px $ivory, 35px 0 0 0 $bright-red,
+          35px 0 0 2px $ivory;
+      }
+
+      &::after {
+        top: 6px;
+        margin: 0 10px;
+      }
+
+      .calendar-month-fixed {
+        font-size: 0.75rem;
+        letter-spacing: 0.5px;
+        margin-bottom: 0.2rem;
+        padding-bottom: 0.2rem;
+      }
+
+      .calendar-day-fixed {
+        font-size: 1.8rem;
+        margin: 0.2rem 0;
+      }
+
+      .calendar-year-fixed {
+        font-size: 0.85rem;
+        letter-spacing: 1px;
+        padding-top: 0.2rem;
+        margin-top: 0.2rem;
+      }
+    }
+  }
+}
+
+// Extra small mobile devices
+@media (max-width: 480px) {
+  .fixed-calendar-widget {
+    top: 10px;
+    right: 10px;
+
+    .calendar-container-fixed {
+      min-width: 80px;
+      padding: 0.8rem 0.6rem 0.6rem 0.6rem;
+      border-radius: 10px;
+
+      &::before {
+        left: 15px;
+        width: 5px;
+        height: 8px;
+        box-shadow: 0 0 0 2px $ivory, 28px 0 0 0 $bright-red,
+          28px 0 0 2px $ivory;
+      }
+
+      &::after {
+        top: 5px;
+        margin: 0 8px;
+        height: 2px;
+      }
+
+      .calendar-month-fixed {
+        font-size: 0.65rem;
+        letter-spacing: 0.3px;
+        margin-bottom: 0.1rem;
+        padding-bottom: 0.1rem;
+      }
+
+      .calendar-day-fixed {
+        font-size: 1.5rem;
+        margin: 0.1rem 0;
+      }
+
+      .calendar-year-fixed {
+        font-size: 0.75rem;
+        letter-spacing: 0.5px;
+        padding-top: 0.1rem;
+        margin-top: 0.1rem;
+      }
     }
   }
 }
