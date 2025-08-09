@@ -819,6 +819,30 @@ body {
         border-radius: $border-radius;
         box-shadow: $card-shadow;
 
+        // Make venue info responsive
+        display: flex;
+        align-items: center;
+        gap: 30px;
+        flex-wrap: wrap;
+
+        .venue-image {
+          flex: 0 0 auto;
+
+          img {
+            width: 100%;
+            max-width: 400px;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+          }
+        }
+
+        .venue-details {
+          flex: 1;
+          min-width: 200px;
+        }
+
         .venue-title {
           font-size: 1.6rem;
           color: $gold;
@@ -1519,6 +1543,21 @@ body {
       .common-venue {
         .venue-info {
           padding: 2rem;
+          flex-direction: column;
+          text-align: center;
+          gap: 20px;
+
+          .venue-image {
+            img {
+              max-width: 100%;
+              height: auto;
+              min-height: 200px;
+            }
+          }
+
+          .venue-details {
+            min-width: auto;
+          }
 
           .venue-title {
             font-size: 1.4rem;

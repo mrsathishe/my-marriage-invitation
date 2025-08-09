@@ -271,32 +271,14 @@ function App() {
             </div>
 
             <AnimatedSection className="common-venue">
-              <div
-                className="venue-info"
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "30px",
-                  flexWrap: "wrap",
-                }}
-              >
-                <div className="venue-image" style={{ flex: "0 0 auto" }}>
+              <div className="venue-info">
+                <div className="venue-image">
                   <img
                     src="https://content.jdmagicbox.com/v2/comp/chennai/k8/044pxx44.xx44.130814144519.b8k8/catalogue/ramani-thirumana-mahal-kovur-chennai-kalyana-mandapams-jE8qDtI8AZ.jpg"
                     alt="Gokul Tirumana Mahal A/C"
-                    style={{
-                      width: "400px",
-                      height: "280px",
-                      objectFit: "cover",
-                      borderRadius: "10px",
-                      boxShadow: "0 4px 15px rgba(0, 0, 0, 0.2)",
-                    }}
                   />
                 </div>
-                <div
-                  className="venue-details"
-                  style={{ flex: "1", minWidth: "200px" }}
-                >
+                <div className="venue-details">
                   <h4 className="venue-title">📍 Venue</h4>
                   <p className="venue-name">Gokul Tirumana Mahal A/C</p>
                   <p className="venue-address">
