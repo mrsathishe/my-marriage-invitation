@@ -1,7 +1,7 @@
 {
   "name": "wedding-invitation-site",
   "version": "0.1.0",
-  "homepage": "https://life.satz.co.in",
+  "homepage": "https://mrsathishe.github.io/my-marriage-invitation",
   "private": true,
   "dependencies": {
     "@testing-library/dom": "^10.4.1",
