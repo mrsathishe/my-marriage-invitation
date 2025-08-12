@@ -1379,7 +1379,7 @@ body {
     min-height: 500px;
     background-attachment: scroll; /* Force scroll on mobile */
     background-size: cover; /* Use cover on mobile to fill screen */
-    background-position: center top -5rem; /* Adjusted for mobile */
+    background-position: center top; /* Adjusted for mobile */
 
     .hero-content {
       .hero-invitation {
