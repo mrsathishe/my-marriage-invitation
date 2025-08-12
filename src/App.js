@@ -103,8 +103,65 @@ function App() {
     smoothscroll.polyfill();
   }, []);
 
+  // State for invitation overlay
+  const [isInvitationOpen, setIsInvitationOpen] = useState(false);
+
+  const openInvitation = () => {
+    setIsInvitationOpen(true);
+  };
+
   return (
     <div className="App">
+      {/* Invitation Overlay */}
+      {!isInvitationOpen && (
+        <motion.div
+          className="invitation-overlay"
+          initial={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 1 }}
+        >
+          <motion.div
+            className="invitation-card"
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 1, ease: "easeOut" }}
+          >
+            <div className="invitation-cover">
+              <div className="invitation-ornament">🌸</div>
+              <h1 className="invitation-title">You're Invited</h1>
+              <div className="invitation-names">
+                <span className="name-sathish">Sathish</span>
+                <span className="name-connector">&</span>
+                <span className="name-durga">Durga</span>
+              </div>
+              <p className="invitation-subtitle">are getting married</p>
+              <div className="invitation-date">
+                <p className="date-text">September 04, 2025</p>
+                <p className="venue-text">Gokul Tirumana Mahal A/C</p>
+                <p className="location-text">Mangalam, Tiruvannamalai</p>
+              </div>
+              <motion.button
+                className="open-invitation-btn"
+                onClick={openInvitation}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Open Invitation
+              </motion.button>
+              <div className="invitation-bottom-ornament">🌺 🌿 🌺</div>
+            </div>
+          </motion.div>
+        </motion.div>
+      )}
+
+      {/* Main Wedding Content */}
+      <motion.div
+        className="main-content"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: isInvitationOpen ? 1 : 0 }}
+        transition={{ duration: 1, delay: 0.5 }}
+        style={{ display: isInvitationOpen ? 'block' : 'none' }}
+      >
       {/* Fixed Calendar Widget */}
       <div className="fixed-calendar-widget">
         <div className="calendar-container-fixed">
@@ -448,6 +505,7 @@ function App() {
           </div>
         </AnimatedSection>
       </footer>
+      </motion.div>
     </div>
   );
 }
