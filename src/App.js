@@ -511,6 +511,10 @@ function App() {
                     <strong>Bride's Side:</strong>
                   </p>
                   <p>Venkatesan: +91 - 94434 62615</p>
+                  <p>
+                    <span className="tab"></span>
+                    <span className="tab"></span> +91 - 80727 27521
+                  </p>
                 </div>
               </AnimatedSection>
             </div>

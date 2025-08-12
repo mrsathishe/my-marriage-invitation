@@ -34,6 +34,11 @@ body {
   overflow-y: hidden; /* Fix dual scrollbars */
 }
 
+.tab {
+  display: inline-block;
+  margin-left: 2.5em;
+}
+
 // Hero Section
 .hero-section {
   height: 100vh;
