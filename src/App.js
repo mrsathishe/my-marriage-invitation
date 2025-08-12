@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import ScrollNavigation from "./components/ScrollNavigation";
 import smoothscroll from "smoothscroll-polyfill";
-import heroImage from "./asset/hero-image.jpg";
+import heroImage1 from "./asset/hero-image.jpg";
 import coupleIllustration from "./asset/couple-illustration.svg";
 import hinduWeddingImage from "./asset/Hindu-wedding.jpeg";
 import "./App.scss";
@@ -106,8 +105,6 @@ function App() {
 
   return (
     <div className="App">
-      <ScrollNavigation />
-
       {/* Fixed Calendar Widget */}
       <div className="fixed-calendar-widget">
         <div className="calendar-container-fixed">
@@ -121,7 +118,7 @@ function App() {
       <section
         className="hero-section"
         style={{
-          backgroundImage: `linear-gradient(rgba(220, 20, 60, 0.4), rgba(80, 200, 120, 0.4)), url(${heroImage})`,
+          backgroundImage: `url(${heroImage1})`,
         }}
       >
         <motion.div
